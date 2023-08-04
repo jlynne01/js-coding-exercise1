@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Mass Index Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="container">
+            <h1>Body Mass Index Calculator</h1>
+            <br>
+            <br>
+            <p>Weight (kg)</p>
+            <input type="number" id="weight" min="1"><br>
+            <p>Height (cm)</p>
+            <input type="number" id="height" min=""><br>
+            <br>
+            <br>
+            <button id="btn" onclick="bmi_Calc();">Calculate</button>
+            <br>
+            <br>
+            <div id="bmi-value">
+                <h2>BMI Result:</h2>
+                <div id="bmiResult"></div>
+                <div class="status"></div>
+                <br>
+                <br>
+                <h2>Status:</h2>
+                <div id="bmi-status"></div>
+        </div>
+    </section>
+    <script>
+       function bmi_Calc() {
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+
+            var result = (weight / ((height * height)
+               / 10000)).toFixed(2);
+
+            if (!isNaN(result)) {
+                document.getElementById("bmiResult").innerHTML = result;
+                if (result < 18.5) {
+                    document.getElementById("bmi-status").innerHTML = "Underweight";
+                    bmiResult.style.color = "#ffc44d";
+                }
+                
+                else if (result < 25) {
+                    document.getElementById("bmi-status").innerHTML = "Normal";
+                    bmiResult.style.color = "#0be881";
+                }
+                else if (result < 30) {
+                    document.getElementById("bmi-status").innerHTML = "Overweight";
+                    bmiResult.style.color = "#ff884d";
+                }
+                else {
+                    document.getElementById("bmi-status").innerHTML = "Obese";
+                    bmiResult.style.color = "#ff5e57";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
